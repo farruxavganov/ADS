@@ -1,0 +1,16 @@
+D:\projects\Algo\c#\BinarySearch\obj\Debug\net5.0\BinarySearch.csproj.AssemblyReference.cache
+D:\projects\Algo\c#\BinarySearch\obj\Debug\net5.0\BinarySearch.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\Algo\c#\BinarySearch\obj\Debug\net5.0\BinarySearch.AssemblyInfoInputs.cache
+D:\projects\Algo\c#\BinarySearch\obj\Debug\net5.0\BinarySearch.AssemblyInfo.cs
+D:\projects\Algo\c#\BinarySearch\obj\Debug\net5.0\BinarySearch.csproj.CoreCompileInputs.cache
+D:\projects\Algo\c#\BinarySearch\bin\Debug\net5.0\BinarySearch.exe
+D:\projects\Algo\c#\BinarySearch\bin\Debug\net5.0\BinarySearch.deps.json
+D:\projects\Algo\c#\BinarySearch\bin\Debug\net5.0\BinarySearch.runtimeconfig.json
+D:\projects\Algo\c#\BinarySearch\bin\Debug\net5.0\BinarySearch.runtimeconfig.dev.json
+D:\projects\Algo\c#\BinarySearch\bin\Debug\net5.0\BinarySearch.dll
+D:\projects\Algo\c#\BinarySearch\bin\Debug\net5.0\ref\BinarySearch.dll
+D:\projects\Algo\c#\BinarySearch\bin\Debug\net5.0\BinarySearch.pdb
+D:\projects\Algo\c#\BinarySearch\obj\Debug\net5.0\BinarySearch.dll
+D:\projects\Algo\c#\BinarySearch\obj\Debug\net5.0\ref\BinarySearch.dll
+D:\projects\Algo\c#\BinarySearch\obj\Debug\net5.0\BinarySearch.pdb
+D:\projects\Algo\c#\BinarySearch\obj\Debug\net5.0\BinarySearch.genruntimeconfig.cache
