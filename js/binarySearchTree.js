@@ -6,7 +6,7 @@ class Node {
 	}
 }
 
-class BST {
+class BSTR {
 	constructor() {
 		this.root = null;
 	}
@@ -115,7 +115,7 @@ class BST {
 }
 
 
-let tree = new BST()
+/*let tree = new BSTR()
 tree.insert(6);
 tree.insert(0);
 tree.insert(99)
@@ -127,4 +127,161 @@ tree.delete(1);
 tree.delete(6);
 tree.insert(4)
 
-tree.display();
+tree.display();*/
+
+class BST {
+	constructor(){
+		this.root = null;
+	}
+	
+	search(key){
+		if (this.root == null){
+			return null;
+		}
+		
+		let current = this.root;
+		
+		while (current != null){
+			if(current.value == key){
+				return current;
+			}
+			
+			if(current.value > key){
+				current = current.left;
+			} else if(current.value < key){
+				current = current.right;
+			}
+		}
+		
+		return null;
+	}
+	
+	insert(key){
+		const newNode = new Node(key);
+		
+		if(this.root == null){
+			this.root = newNode
+			return;
+		}
+		
+		let current = this.root;
+		
+		while(true){
+			if(current.value > key){
+				if(current.left == null){
+					current.left = newNode;
+					return
+				}
+				current = current.left
+			} else if(current.value < key){
+				if(current.right == null){
+					current.right = newNode
+					return
+				}
+				current = current.right
+			}
+		}
+	}
+	
+	display(){
+		const stack = [];
+		let current = this.root;
+		
+		while(true){
+			while(current != null){
+				stack.push(current);
+				current = current.left;
+			}
+			
+			if(stack.length == 0){
+				break;
+			}
+			
+			current = stack.pop();
+			console.log(current.value);
+			current = current.right;
+		}
+	}
+	
+	delete(key){
+		let parent = null;
+		let current = this.root;
+		
+		while(current != null && current.value != key){
+			parent = current;
+			if(current.value > key){
+				current = current.left;
+			} else if(current.value < key){
+				current = current.right;
+			} else{
+				break;
+			}			
+		}
+		
+		if(current == null){
+			return;
+		}
+		
+		if(current.left == null){
+			if(parent == null){
+				this.root = current.right;
+				return;
+			} else if(current == parent.left){
+				parent.left = current.right;
+				return;
+			} else {
+				parent.right = current.right;
+			}
+		}
+		
+		else if(current.right == null){
+			if(parent == null){
+				this.root = current.left;
+				return;
+			} else if(current == parent.left){
+				parent.left = current.left;
+				return;
+			} else {
+				parent.right = current.left;
+			}
+		} else {
+			let successorParent = current;
+			let successor = current.right;
+			
+			while(successor.left != null){
+				successorParent = successor;
+				successor = successor.left;
+			}
+			
+			if(successorParent != current){
+				successorParent.left = successor.right;
+				successor = current.right;
+			}
+			
+			if(parent == null){
+				this.root = successor;
+			} else if(current == parent.left){
+				parent.left = successor;
+			} else if(current == parent.right){
+				parent.right = successor;
+			}
+			successor.left = current.left;
+		}
+	}
+}
+
+const tree1 = new BST();
+tree1.insert(4);
+tree1.insert(0);
+tree1.insert(7);
+tree1.insert(11);
+tree1.insert(-1)
+tree1.delete(0)
+tree1.delete(4)
+tree1.delete(11)
+tree1.delete(7)
+tree1.delete()
+tree1.insert(77)
+tree1.insert(772)
+tree1.delete(77)
+tree1.display();
