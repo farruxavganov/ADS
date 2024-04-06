@@ -94,104 +94,108 @@ class BSTR:
 class BST:
     def __init__(self):
         self.root = None
-        
+    
     def search(self, key):
         current = self.root
-        
+        if current is None:
+            return current
+            
         while current is not None:
             if current.value == key:
                 return current
-            if key < current.value:
+            if current.value > key:
                 current = current.left
-            elif key > current.value:
+            elif current.value < key:
                 current = current.right
-                
-    def insert(self, key):
+          
+    def insert(self, key):  
         new_node = Node(key)
         
         if self.root is None:
             self.root = new_node
             return
-            
+        
         current = self.root
         
         while True:
-            if key < current.value:
+            if current.value > key:
                 if current.left is None:
                     current.left = new_node
                     break
                 current = current.left
-            else:
-                if current.right is None:
+            elif current.value < key:
+                if current.right is None:   
                     current.right = new_node
                     break
                 current = current.right
-    
+                
     def display(self):
         stack = []
-        
+            
         current = self.root
+            
         while True:
-            while current is not None:
+            while current is not None: 
                 stack.append(current)
                 current = current.left
-        
+                    
             if len(stack) == 0:
                 break
+                
             current = stack.pop()
             print(current.value, end=" ")
             current = current.right
-        print("")
-        
+         
     def delete(self, key):
-        parrent = None
+        parent = None
         current = self.root
         
         while current is not None and current.value != key:
-            parrent = current
-            if key < current.value:
+            parent = current
+            if current.value > key:
                 current = current.left
-            elif key > current.value:
+            elif current.value < key:
                 current = current.right
-        
+                
         if current is None:
             return
-
-        if current.left is None:
-            if parrent is None:
-                self.root = current.right
-            elif current == parrent.left:
-                parrent.left = current.right
-            else: 
-                parrent.right = current.right
-        elif current.right is None:
-            if parrent is None:
-                self.root = current.left
-            elif current == parrent.right:
-                parrent.right = current.left
-            else:
-                parrent.left = current.right
-                
-        else:
-            parrent_sucsessor = current
-            sucsessor = current.right
             
-            while sucsessor.left is not None:
-                parrent_sucsessor = sucsessor
-                sucsessor = current.left
-                
-            if parrent_sucsessor != current:
-                parrent_sucsessor.left = sucsessor.right # or None
-                sucsessor.right = current.right
-                
-            if parrent is None:
-                self.root = sucsessor
-            elif current == parrent.left:
-                parrent.left = sucsessor
+        if current.left is None:
+            if parent is None:
+                self.root = current.right
+            elif current == parent.left:
+                parent.left = current.right
             else:
-                parrent.right = sucsessor
+                parent.right = current.right
                 
-            sucsessor.left = current.left
+        elif current.right is None:
+            if parent is None:
+                self.root = current.left
+            elif current == parent.left:
+                parent.left = current.left
+            else:
+                parent.right = current.left
+        else:
+            successor_parent = current
+            successor = current.right
+            
+            while successor.left is not None:
+                successor_parent = successor
+                successor = successor.left
+                
+            if successor_parent != current:
+                successor_parent.left = successor.right
+                successor.right = current.right
+            
+            if parent is None:
+                self.root = successor
+            elif current == parent.left:
+                parent.left = successor
+            elif current == parent.right:
+                parent.right = successor
+            successor.left = current.left
+                
+            
    
                 
 tree1 = BST()
@@ -199,8 +203,19 @@ tree1.insert(8)
 tree1.insert(0)
 tree1.insert(4)
 tree1.insert(11)
-tree1.delete(8)
-tree1.insert(5)
-tree1.insert(55)
+tree1.insert(77)
+tree1.insert(-1)
+
+tree1.delete(-1)
+tree1.delete(11)
 tree1.delete(0)
+tree1.delete(8)
+tree1.delete(4)
+tree1.insert(66)
+tree1.insert(0)
+tree1.delete(66)
+tree1.delete(77)
+tree1.delete(0)
+tree1.insert(1)
+tree1.delete(-1)
 tree1.display()
