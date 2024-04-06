@@ -129,6 +129,7 @@ tree.insert(4)
 
 tree.display();*/
 
+//	BST none recursive
 class BST {
 	constructor(){
 		this.root = null;
